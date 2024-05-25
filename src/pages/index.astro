@@ -3,14 +3,166 @@
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Triple Crown Digital</title>
+  </head>
+  <body>
+    <!-- Container -->
+    <div class="flex flex-col gap-12 px-4 py-6 max-w-5xl mx-auto pb-16">
+      <!-- Title card -->
+      <div
+        class="title-card w-full h-15 rounded-xl p-4 flex flex-col gap-8 items-center justify-center h-96 shadow-xl"
+      >
+        <div class="title-card-background"></div>
+        <h1 class="text-3xl">Triple Crown Digital</h1>
+        <span
+          >We help founders, startups and step-ups grow their digital asset
+          businesses</span
+        >
+        <div class="flex gap-8 w-3/4 justify-around">
+          <div class="flex flex-col gap-4 items-center">
+            <!-- Christine Sandler -->
+            <img
+              class="h-40 w-40 rounded-full object-cover"
+              src="/profile-imgs/christine-sandler.jpg"
+              alt="Christine Sandler"
+            />
+            <span>Christine Sandler</span>
+          </div>
+          <div class="flex flex-col gap-4 items-center">
+            <!-- Beatrice O'Connell -->
+            <img
+              class="h-40 w-40 rounded-full object-cover"
+              src="/profile-imgs/beatrice-oconnell.jpg"
+              alt="Beatrice O'Connell"
+            />
+            <span>Beatrice O'Connell</span>
+          </div>
+          <div class="flex flex-col gap-4 items-center">
+            <!-- Noelle Acheson -->
+            <img
+              class="h-40 w-40 rounded-full object-cover"
+              src="/profile-imgs/noelle-acheson.jpg"
+              alt="Noelle Acheson"
+            />
+            <span>Noelle Acheson</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pitch card -->
+      <div class="pitch-card flex p-4 rounded-xl flex-grow shadow-xl h-96">
+        <div class="flex flex-col w-3/5 gap-4 p-4">
+          <h2 class="text-2xl">Pitch:</h2>
+          <span
+            >Triple Crown Digital aims to support businesses expanding the
+            universe of crypto marketplaces by helping with their go-to-market,
+            liquidity and messaging strategies. By leveraging decades of team
+            experience in the digital asset industry as well as skill sets honed
+            at traditional finance firms and crypto startups, we work closely
+            with leadership teams to reach their milestones and achieve goals. 
+            Send us an email if you’d like to chat and see how we could be
+            useful.
+          </span>
+        </div>
+        <div class="flex flex-grow justify-center items-center">
+          <img class="rounded-xl h-60 w-60" src="/site-imgs/logo.jpeg" />
+        </div>
+      </div>
+
+      <!-- Sectors we have worked with -->
+      <div class="bg-[#D1EAE6] p-8 rounded-xl flex flex-col gap-4">
+        <h2 class="text-2xl">Sectors we have worked with:</h2>
+        <ul class="grid grid-cols-2 gap-2 list-disc px-4">
+          <li>Issuers</li>
+          <li>Digital asset custody</li>
+          <li>Liquidity management</li>
+          <li>Market infrastructure builders</li>
+          <li>Venture capital</li>
+          <li>Asset management</li>
+
+          <li>Blockchain ecosystems</li>
+          <li>Blockchain-based services</li>
+          <li>Trading desks</li>
+          <li>Insurance companies</li>
+          <li>e-Commerce</li>
+          <li>Media businesses</li>
+        </ul>
+      </div>
+
+      <!-- Contact form -->
+      <div class="pitch-card flex flex-col p-8 rounded-xl flex-grow shadow-xl">
+        <h2 class="text-2xl">Contact form</h2>
+        <div class="p-4 flex flex-col gap-8">
+          <input
+            class="bg-white shadow-xl rounded-xl w-full h-10 p-4"
+            placeholder="Subject header"
+          />
+          <textarea
+            placeholder="Type your message here"
+            class="bg-white shadow-xl rounded-xl w-full py-4"
+            rows="10"
+          >
+          </textarea>
+
+          <button
+            class="bg-[#D1EAE6] font-semibold text-xl w-40 mx-auto rounded-full shadow-xl px-4 py-2"
+            >Send</button
+          >
+        </div>
+      </div>
+    </div>
+
+    <div id="modalsContainer" class="hidden"></div>
+  </body>
 </html>
+
+<style>
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .title-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .title-card-background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url("public/site-imgs/vases.jpg");
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+  }
+
+  .title-card-background::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(209, 225, 230, 0.5);
+    z-index: -2;
+  }
+
+  .pitch-card {
+    background-color: #f2e3ac;
+  }
+</style>
