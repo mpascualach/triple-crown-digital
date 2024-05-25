@@ -5,7 +5,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -28,8 +28,13 @@
           businesses</span
         >
         <div class="flex gap-8 w-3/4 justify-around">
-          <div class="flex flex-col gap-4 items-center">
-            <!-- Christine Sandler -->
+          <!-- Christine Sandler -->
+          <div
+            id="christineProfile"
+            class="flex flex-col gap-4 items-center cursor-pointer"
+            data-modal-target="modalChristine"
+            data-modal-toggle="modalChristine"
+          >
             <img
               class="h-40 w-40 rounded-full object-cover"
               src="/profile-imgs/christine-sandler.jpg"
@@ -37,8 +42,13 @@
             />
             <span>Christine Sandler</span>
           </div>
-          <div class="flex flex-col gap-4 items-center">
-            <!-- Beatrice O'Connell -->
+          <!-- Beatrice O'Connell -->
+          <div
+            id="beatriceProfile"
+            class="flex flex-col gap-4 items-center cursor-pointer"
+            data-modal-target="modalBeatrice"
+            data-modal-toggle="modalBeatrice"
+          >
             <img
               class="h-40 w-40 rounded-full object-cover"
               src="/profile-imgs/beatrice-oconnell.jpg"
@@ -46,8 +56,13 @@
             />
             <span>Beatrice O'Connell</span>
           </div>
-          <div class="flex flex-col gap-4 items-center">
-            <!-- Noelle Acheson -->
+          <!-- Noelle Acheson -->
+          <div
+            id="noelleProfile"
+            class="flex flex-col gap-4 items-center cursor-pointer"
+            data-modal-target="modalNoelle"
+            data-modal-toggle="modalNoelle"
+          >
             <img
               class="h-40 w-40 rounded-full object-cover"
               src="/profile-imgs/noelle-acheson.jpg"
@@ -108,7 +123,7 @@
           />
           <textarea
             placeholder="Type your message here"
-            class="bg-white shadow-xl rounded-xl w-full py-4"
+            class="bg-white shadow-xl rounded-xl w-full py-4 border-none"
             rows="10"
           >
           </textarea>
@@ -121,7 +136,205 @@
       </div>
     </div>
 
-    <div id="modalsContainer" class="hidden"></div>
+    <!-- Modals -->
+
+    <!-- Christine's modal -->
+    <div
+      id="modalChristine"
+      tabindex="-1"
+      class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full overlay w-full"
+    >
+      <div class="relative w-full max-h-full max-w-xl">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <!-- Modal header -->
+          <div
+            class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
+          >
+            <h2 class="text-2xl text-center w-full">Christine Sandler</h2>
+            <button
+              type="button"
+              class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+              data-modal-hide="modalChristine"
+            >
+              <svg
+                class="w-3 h-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 14"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+
+          <div class="p-4 flex flex-col items-center gap-4">
+            <img
+              class="h-80 w-80 rounded-full object-cover"
+              src="/profile-imgs/christine-sandler.jpg"
+              alt="Christine Sandler"
+            />
+            <p class="p-8">
+              Christine began her award-winning career in traditional finance
+              with W. H. Reaves & Co, moving on to Spear Leeds and Kellogg,
+              Bloomberg Tradebook, Archipelago, Merrill Lynch, NYSE Euronext and
+              Barclays. She joined the crypto industry in 2018 as Head of US
+              Institutional Sales at Coinbase, before leading as Head of Sales
+              and Marketing and Research at Fidelity Digital Assets, Partner at
+              Walden Bridge Capital and Chief Revenue Officer at Hashnote. As
+              well as her key contributions to both traditional and crypto
+              finance, Christine co-founded the Women’s Leadership Action
+              Network, has chaired the Women in Finance Committee for the
+              Security Trader’s Association, and serves as a Trustee of two
+              public charter schools serving autistic students in New York. When
+              she’s not on the phone to clients and contacts, Christine can be
+              found drafting strategy documents, shifting between New York and
+              Long Island, and walking her dog, Ponzi.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Beatrice's modal -->
+    <div
+      id="modalBeatrice"
+      tabindex="-1"
+      class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full overlay w-full"
+    >
+      <div class="relative w-full max-h-full max-w-xl">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <!-- Modal header -->
+          <div
+            class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
+          >
+            <h2 class="text-2xl text-center w-full">Beatrice O'Connell</h2>
+            <button
+              type="button"
+              class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+              data-modal-hide="modalBeatrice"
+            >
+              <svg
+                class="w-3 h-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 14"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+
+          <div class="p-4 flex flex-col items-center gap-4">
+            <img
+              class="h-80 w-80 rounded-full object-cover"
+              src="/profile-imgs/beatrice-oconnell.jpg"
+              alt="Beatrice O'Connell Sandler"
+            />
+            <p class="p-8">
+              Beginning with Merrill Lynch and moving through analytical,
+              product development and client-facing roles at AIG, Dresdner
+              Kleinwort Wasserstein, Commerzbank, Deutsche Bank, BNP Paribas
+              Asset Management and Citi, Bea moved into the crypto industry in
+              2015 as Director of Business Development for itBit. She went on to
+              lead crypto trading at Circle, started her own OTC desk
+              Reciprocity Trading, was CEO of Nautilus Tech, acted as Advisor
+              for Strategic Partnerships at Makara and led as Managing Director
+              at Radkl, MPCH and Rockaway. Bea divides her time between the US
+              and Ireland and is an advocate for privacy technology as well as
+              formerly incarcerated women and their children through her work
+              with Hour Children.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Noelle's modal -->
+    <div
+      id="modalNoelle"
+      tabindex="-1"
+      class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full overlay w-full"
+    >
+      <div class="relative w-full max-h-full max-w-xl">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <!-- Modal header -->
+          <div
+            class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
+          >
+            <h2 class="text-2xl text-center w-full">Noelle Acheson</h2>
+            <button
+              type="button"
+              class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+              data-modal-hide="modalNoelle"
+            >
+              <svg
+                class="w-3 h-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 14"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+
+          <div class="p-4 flex flex-col items-center gap-4">
+            <img
+              class="h-80 w-80 rounded-full object-cover"
+              src="/profile-imgs/noelle-acheson.jpg"
+              alt="Noelle Acheson"
+            />
+            <p class="p-8">
+              Christine began her award-winning career in traditional finance
+              with W. H. Reaves & Co, moving on to Spear Leeds and Kellogg,
+              Bloomberg Tradebook, Archipelago, Merrill Lynch, NYSE Euronext and
+              Barclays. She joined the crypto industry in 2018 as Head of US
+              Institutional Sales at Coinbase, before leading as Head of Sales
+              and Marketing and Research at Fidelity Digital Assets, Partner at
+              Walden Bridge Capital and Chief Revenue Officer at Hashnote. As
+              well as her key contributions to both traditional and crypto
+              finance, Christine co-founded the Women’s Leadership Action
+              Network, has chaired the Women in Finance Committee for the
+              Security Trader’s Association, and serves as a Trustee of two
+              public charter schools serving autistic students in New York. When
+              she’s not on the phone to clients and contacts, Christine can be
+              found drafting strategy documents, shifting between New York and
+              Long Island, and walking her dog, Ponzi.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flowbite (for out-of-the-box components) -->
+    <script
+      is:inline
+      src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"
+    ></script>
   </body>
 </html>
 
@@ -164,5 +377,9 @@
 
   .pitch-card {
     background-color: #f2e3ac;
+  }
+
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.7);
   }
 </style>
