@@ -18,7 +18,7 @@ import Profile from "./profile/Profile.astro";
   >
     <!-- Beatrice O'Carroll -->
     <Profile
-      name="Beatrice O'Carroll"
+      name="Bea O'Carroll"
       image="/profile-imgs/beatrice-oconnell.jpg"
       description=`Beginning with Merrill Lynch and moving through analytical, product
           development and client-facing roles at AIG, Dresdner Kleinwort
@@ -78,3 +78,15 @@ import Profile from "./profile/Profile.astro";
     />
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const bgElement = document.querySelector(".title-card-background");
+    const img = new Image();
+    img.src = "/vases.jpg";
+    img.onload = () => {
+      (bgElement as HTMLElement).style.backgroundImage = `url(${img.src})`;
+      bgElement.classList.add("loaded");
+    };
+  });
+</script>
