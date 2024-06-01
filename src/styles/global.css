@@ -19,6 +19,7 @@ body {
 .title-card {
   position: relative;
   overflow: hidden;
+  background-color: rgba(209, 225, 230);
 }
 
 .title-card-background {
@@ -27,7 +28,7 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  background-image: url("/vases-2.png");
+  /* background-image: url("/vases-2.png"); */
   background-size: cover;
   background-position: center;
   z-index: -1;
