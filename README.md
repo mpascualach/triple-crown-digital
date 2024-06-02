@@ -1,3 +1,5 @@
+This is Triple Crown Digital's official website
+
 # Astro Starter Kit: Minimal
 
 ```sh
