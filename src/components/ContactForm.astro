@@ -17,6 +17,17 @@
     <!-- Email -->
     <input
       class="bg-white shadow-xl rounded-xl w-full h-10 p-4 border-none"
+      placeholder="Name"
+      name="name"
+      type="text"
+      required
+    />
+
+    <input type="hidden" name="from_name" value="Mission Control" />
+
+    <!-- Email -->
+    <input
+      class="bg-white shadow-xl rounded-xl w-full h-10 p-4 border-none"
       placeholder="Email"
       name="email"
       type="email"
@@ -27,7 +38,7 @@
     <input
       class="bg-white shadow-xl rounded-xl w-full h-10 p-4 border-none"
       placeholder="Subject header"
-      name="header"
+      name="subject"
       type="text"
       required
     />
@@ -52,15 +63,19 @@
   </form>
 </div>
 
-<div id="toaster" class="hidden">Message sent successfully!</div>
+<div
+  id="toaster"
+  class="text-white transition-all duration-300 opacity-0 text-center py-2 px-4 rounded-lg absolute bottom-5"
+>
+</div>
 
 <script is:inline>
   document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("contact-form");
-    const result = document.getElementById("result");
+    const toaster = document.getElementById("toaster");
 
     form.addEventListener("submit", function (event) {
-      event.preventDefault();
+      // event.preventDefault();
       form.classList.add("was-validated");
       if (!form.checkValidity()) {
         form.querySelectorAll(":invalid")[0].focus();
@@ -68,9 +83,13 @@
       }
       const formData = new FormData(form);
       const object = Object.fromEntries(formData);
+      object.from_name = object.name;
       const json = JSON.stringify(object);
 
-      result.innerHTML = "Sending...";
+      toaster.classList.remove("hidden");
+      toaster.classList.add("opacity-100");
+      toaster.classList.add("bg-blue-700");
+      toaster.innerHTML = "Sending...";
 
       fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -83,22 +102,26 @@
         .then(async (response) => {
           let json = await response.json();
           if (response.status === 200) {
-            result.classList.add("text-green-500");
-            result.innerHTML = "Message sent successfully!";
+            toaster.classList.remove("bg-blue-700");
+            toaster.classList.add("bg-green-500");
+            toaster.innerHTML = "Message sent successfully!";
           } else {
             console.log(response);
-            result.classList.add("text-red-500");
+            toaster.classList.add("text-red-500");
           }
         })
         .catch((error) => {
           console.log(error);
-          result.innerHTML = "Something went wrong!";
+          toaster.classList.remove("bg-blue-700");
+          toaster.classList.add("text-red-500");
+          toaster.innerHTML = "Something went wrong!";
         })
         .then(() => {
           form.reset();
           form.classList.remove("was-validated");
           setTimeout(() => {
-            result.style.display = "none";
+            toaster.classList.remove("opacity-100");
+            toaster.classList.add("opacity-0");
           }, 5000);
         });
     });
