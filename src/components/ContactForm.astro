@@ -7,13 +7,11 @@
     method="POST"
     data-astro-reload
   >
-    <!-- Replace with your Access Key -->
     <input
       type="hidden"
       name="access_key"
       value="abfdadf2-c0cb-42fe-ab04-9bbb15880704"
     />
-
     <!-- Email -->
     <input
       class="bg-white shadow-xl rounded-xl w-full h-10 p-4 border-none"
@@ -51,6 +49,12 @@
       name="message"
       required></textarea>
 
+    <input
+      type="hidden"
+      name="redirect"
+      value="https://web3forms.com/success"
+    />
+
     <!-- hCaptcha Spam Protection -->
     <div class="h-captcha" data-captcha="true"></div>
 
@@ -59,7 +63,6 @@
       [disabled]="!form.valid"
       type="submit">Send</button
     >
-    <div id="result" class="mt-3 text-center"></div>
   </form>
 </div>
 
@@ -71,20 +74,36 @@
 
 <script is:inline>
   document.addEventListener("DOMContentLoaded", function () {
+    console.log("What's in window?: ", window);
+    console.log(
+      "Is this the access key?: ",
+      import.meta.env.VITE_TEST_ACCESS_KEY
+    );
+
     const form = document.getElementById("contact-form");
     const toaster = document.getElementById("toaster");
 
+    console.log("DOM content loaded!");
+
     form.addEventListener("submit", function (event) {
-      // event.preventDefault();
+      event.preventDefault();
       form.classList.add("was-validated");
       if (!form.checkValidity()) {
         form.querySelectorAll(":invalid")[0].focus();
         return;
       }
+      var accessKeyInput = document.createElement("input");
+      accessKeyInput.type = "hidden";
+      accessKeyInput.name = "access_key";
+      console.log("Test access key: ", window.VITE_TEST_ACCESS_KEY);
+      accessKeyInput.value = import.meta.env.VITE_ACCESS_KEY;
+      form.appendChild(accessKeyInput);
+
       const formData = new FormData(form);
       const object = Object.fromEntries(formData);
       object.from_name = object.name;
       const json = JSON.stringify(object);
+      console.log("JsON: ", json);
 
       toaster.classList.remove("hidden");
       toaster.classList.add("opacity-100");

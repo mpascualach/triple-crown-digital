@@ -3,6 +3,7 @@ const { image, name, size } = Astro.props;
 ---
 
 <img
+  loading="lazy"
   class=`${size} rounded-full object-cover shadow-xl`
   src=`${image}`
   alt={name}
