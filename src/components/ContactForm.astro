@@ -3,14 +3,12 @@
   <form
     class="p-4 flex flex-col gap-8 needs-validation"
     id="contact-form"
-    action="https://api.web3forms.com/submit"
-    method="POST"
     data-astro-reload
   >
     <input
       type="hidden"
       name="access_key"
-      value="abfdadf2-c0cb-42fe-ab04-9bbb15880704"
+      value={import.meta.env.VITE_TEST_ACCESS_KEY}
     />
     <!-- Email -->
     <input
@@ -66,44 +64,33 @@
   </form>
 </div>
 
-<div
-  id="toaster"
-  class="text-white transition-all duration-300 opacity-0 text-center py-2 px-4 rounded-lg absolute bottom-5"
->
+<div class="fixed bottom-5 w-full">
+  <div
+    id="toaster"
+    class="text-white transition-all duration-300 bg-blue-700 text-center py-2 px-4 rounded-lg mx-auto w-fit opacity-0"
+  >
+    Please wait while your message is being sent...
+  </div>
 </div>
 
 <script is:inline>
-  document.addEventListener("DOMContentLoaded", function () {
-    console.log("What's in window?: ", window);
-    console.log(
-      "Is this the access key?: ",
-      import.meta.env.VITE_TEST_ACCESS_KEY
-    );
+  const form = document.getElementById("contact-form");
+  const toaster = document.getElementById("toaster");
 
-    const form = document.getElementById("contact-form");
-    const toaster = document.getElementById("toaster");
-
-    console.log("DOM content loaded!");
-
-    form.addEventListener("submit", function (event) {
+  form.addEventListener(
+    "submit",
+    function (event) {
       event.preventDefault();
       form.classList.add("was-validated");
       if (!form.checkValidity()) {
         form.querySelectorAll(":invalid")[0].focus();
         return;
       }
-      var accessKeyInput = document.createElement("input");
-      accessKeyInput.type = "hidden";
-      accessKeyInput.name = "access_key";
-      console.log("Test access key: ", window.VITE_TEST_ACCESS_KEY);
-      accessKeyInput.value = import.meta.env.VITE_ACCESS_KEY;
-      form.appendChild(accessKeyInput);
 
       const formData = new FormData(form);
       const object = Object.fromEntries(formData);
       object.from_name = object.name;
       const json = JSON.stringify(object);
-      console.log("JsON: ", json);
 
       toaster.classList.remove("hidden");
       toaster.classList.add("opacity-100");
@@ -143,8 +130,9 @@
             toaster.classList.add("opacity-0");
           }, 5000);
         });
-    });
-  });
+    },
+    { once: true }
+  );
 </script>
 
 <script src="https://web3forms.com/client/script.js" async defer></script>
