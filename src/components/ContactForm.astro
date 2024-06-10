@@ -56,12 +56,12 @@
     />
 
     <!-- hCaptcha Spam Protection -->
-    <div
+    <!-- <div
       class="h-captcha"
       data-captcha="true"
       data-sitekey="79f23e56-e154-4c02-b00a-568ee90e5cc4"
     >
-    </div>
+    </div> -->
 
     <input
       type="checkbox"
@@ -94,6 +94,7 @@
   form.addEventListener(
     "submit",
     function (event) {
+      console.log("Event: ", event);
       event.preventDefault();
       form.classList.add("was-validated");
       if (!form.checkValidity()) {
@@ -121,21 +122,30 @@
       })
         .then(async (response) => {
           let json = await response.json();
-          if (json.status === 200) {
+          console.log("Reponse: ", json);
+          if (!!json.success) {
             toaster.classList.remove("bg-blue-700");
             toaster.classList.add("bg-green-500");
             toaster.innerHTML = "Message sent successfully!";
           } else {
-            console.log(json);
             toaster.classList.remove("bg-blue-700");
             toaster.classList.add("text-red-500");
-            toaster.innerHTML = "Something went wrong!";
+            toaster.innerHTML = json.message;
           }
+
+          setTimeout(() => {
+            toaster.classList.remove("opacity-100");
+            toaster.classList.add("opacity-0");
+            toaster.classList.add("bg-blue-700");
+            toaster.innerHTML = "Sending...";
+            toaster.classList.remove("text-red-500");
+            toaster.classList.remove("text-green-500");
+          }, 5000);
         })
         .catch((error) => {
-          console.log(error);
+          console.error("Caught error: ", error);
           toaster.classList.remove("bg-blue-700");
-          toaster.classList.add("text-red-500");
+          toaster.classList.add("bg-red-500");
           toaster.innerHTML = "Something went wrong!";
         })
         .then(() => {
@@ -146,8 +156,8 @@
             toaster.classList.add("opacity-0");
             toaster.classList.add("bg-blue-700");
             toaster.innerHTML = "Sending...";
-            toaster.classList.remove("text-red-500");
-            toaster.classList.remove("text-green-500");
+            toaster.classList.remove("bg-red-500");
+            toaster.classList.remove("bg-green-500");
           }, 5000);
         });
     },
