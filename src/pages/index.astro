@@ -3,6 +3,7 @@ import TitleCard from "../components/TitleCard.astro";
 import PitchCard from "../components/PitchCard.astro";
 import SectorsWorkedWith from "../components/SectorsWorkedWith.astro";
 import ContactForm from "../components/ContactForm.astro";
+import ContactUs from "../components/ContactUs.astro";
 import "../styles/global.css";
 ---
 
@@ -14,7 +15,7 @@ import "../styles/global.css";
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="preload" href="/vases.jpg" as="image" />
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Triple Crown Digital</title>
@@ -32,7 +33,7 @@ import "../styles/global.css";
       <SectorsWorkedWith />
 
       <!-- Contact form -->
-      <ContactForm />
+      <ContactUs />
       <!-- Flowbite (for out-of-the-box components) -->
       <script
         is:inline

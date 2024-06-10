@@ -3,6 +3,8 @@
   <form
     class="p-4 flex flex-col gap-8 needs-validation"
     id="contact-form"
+    name="contact-form"
+    data-netlify="true"
     data-astro-reload
   >
     <input
@@ -54,7 +56,19 @@
     />
 
     <!-- hCaptcha Spam Protection -->
-    <div class="h-captcha" data-captcha="true"></div>
+    <div
+      class="h-captcha"
+      data-captcha="true"
+      data-sitekey="79f23e56-e154-4c02-b00a-568ee90e5cc4"
+    >
+    </div>
+
+    <input
+      type="checkbox"
+      name="botcheck"
+      class="hidden"
+      style="display: none;"
+    />
 
     <button
       class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-10 py-2.5 text-center mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-fit mx-auto"
@@ -107,13 +121,15 @@
       })
         .then(async (response) => {
           let json = await response.json();
-          if (response.status === 200) {
+          if (json.status === 200) {
             toaster.classList.remove("bg-blue-700");
             toaster.classList.add("bg-green-500");
             toaster.innerHTML = "Message sent successfully!";
           } else {
-            console.log(response);
+            console.log(json);
+            toaster.classList.remove("bg-blue-700");
             toaster.classList.add("text-red-500");
+            toaster.innerHTML = "Something went wrong!";
           }
         })
         .catch((error) => {
@@ -128,6 +144,10 @@
           setTimeout(() => {
             toaster.classList.remove("opacity-100");
             toaster.classList.add("opacity-0");
+            toaster.classList.add("bg-blue-700");
+            toaster.innerHTML = "Sending...";
+            toaster.classList.remove("text-red-500");
+            toaster.classList.remove("text-green-500");
           }, 5000);
         });
     },
