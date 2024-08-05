@@ -5,7 +5,7 @@ import Profile from "./profile/Profile.astro";
 
 <!-- Title card + profiles -->
 <div
-  class="title-card w-full h-15 rounded-xl p-4 flex flex-col gap-8 items-center justify-center lg:h-96 shadow-xl background"
+  class="title-card w-full rounded-xl p-4 py-8 flex flex-col gap-8 items-center justify-center shadow-xl background"
 >
   <div class="title-card-background"></div>
   <h1 class="text-4xl">Triple Crown Digital</h1>
@@ -14,13 +14,14 @@ import Profile from "./profile/Profile.astro";
     businesses.</span
   >
   <div
-    class="flex max-sm:flex-col gap-8 justify-between max-sm:w-full w-[70%] max-sm:pb-8"
+    class="flex max-sm:flex-col gap-8 justify-around max-sm:w-full w-[70%] max-sm:pb-8"
   >
-    <!-- Beatrice O'Carroll -->
-    <Profile
-      name="Bea O'Carroll"
-      image="/profile-imgs/beatrice-oconnell.jpg"
-      description=`Beginning with Merrill Lynch and moving through analytical, product
+    <div class="flex justify-around w-4/5">
+      <!-- Beatrice O'Carroll -->
+      <Profile
+        name="Bea O'Carroll"
+        image="/profile-imgs/beatrice-oconnell.jpg"
+        description=`Beginning with Merrill Lynch and moving through analytical, product
           development and client-facing roles at AIG, Dresdner Kleinwort
           Wasserstein, Commerzbank, Deutsche Bank, BNP Paribas Asset Management
           and Citi, Bea moved into the crypto industry in 2015 as Director of
@@ -31,16 +32,16 @@ import Profile from "./profile/Profile.astro";
           her time between the US and Ireland and is an advocate for privacy
           technology as well as formerly incarcerated women and their children
           through her work with Hour Children.`
-      `
-      id="beatriceProfile"
-      modalId="modalBeatrice"
-    />
+        `
+        id="beatriceProfile"
+        modalId="modalBeatrice"
+      />
 
-    <!-- Beatrice O'Carroll -->
-    <Profile
-      name="Christine Sandler"
-      image="/profile-imgs/christine-sandler.jpg"
-      description=`Christine began her award-winning career in traditional finance with
+      <!-- Christine Sandler -->
+      <Profile
+        name="Christine Sandler"
+        image="/profile-imgs/christine-sandler.jpg"
+        description=`Christine began her award-winning career in traditional finance with
           W. H. Reaves & Co, moving on to Spear Leeds and Kellogg, Bloomberg
           Tradebook, Archipelago, Merrill Lynch, NYSE Euronext and Barclays. She
           joined the crypto industry in 2018 as Head of US Institutional Sales
@@ -54,12 +55,13 @@ import Profile from "./profile/Profile.astro";
           students in New York. When she’s not on the phone to clients and
           contacts, Christine can be found drafting strategy documents, shifting
           between New York and Long Island, and walking her dog, Ponzi.`
-      id="christineProfile"
-      modalId="modalChristine"
-    />
+        id="christineProfile"
+        modalId="modalChristine"
+      />
+    </div>
 
-    <!-- Beatrice O'Carroll -->
-    <Profile
+    <!-- Noelle Acheson -->
+    <!-- <Profile
       name="Noelle Acheson"
       image="/profile-imgs/noelle-acheson.jpg"
       description=`Noelle is a crypto and blockchain enthusiast, with a background in
@@ -75,7 +77,7 @@ import Profile from "./profile/Profile.astro";
           security of the financial system.`
       id="noelleProfile"
       modalId="modalNoelle"
-    />
+    /> -->
   </div>
 </div>
 
